@@ -4,94 +4,98 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Connexion - StockMaster Pro</title>
+        <link rel="stylesheet" href="css/style.css">
         <style>
             body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
-                background-color: #f4f7f6;
-                margin: 0;
             }
 
-            .login-container {
-                background: white;
-                padding: 2rem;
-                border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                width: 300px;
+            .login-card {
+                width: 100%;
+                max-width: 400px;
+                padding: 2.5rem;
+                margin: 1rem;
             }
 
-            h2 {
+            .login-header {
                 text-align: center;
-                color: #333;
-                margin-bottom: 1.5rem;
+                margin-bottom: 2rem;
             }
 
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            label {
-                display: block;
+            .login-header h1 {
+                font-size: 1.875rem;
+                font-weight: 800;
+                color: var(--primary);
                 margin-bottom: 0.5rem;
-                color: #666;
             }
 
-            input {
-                width: 100%;
-                padding: 0.5rem;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                box-sizing: border-box;
+            .login-header p {
+                color: var(--text-muted);
+                font-size: 0.875rem;
             }
 
-            button {
-                width: 100%;
+            .error-box {
+                background: #fee2e2;
+                border-left: 4px solid #ef4444;
+                color: #b91c1c;
                 padding: 0.75rem;
-                background-color: #007bff;
-                color: white;
-                border: none;
                 border-radius: 4px;
-                cursor: pointer;
-                font-size: 1rem;
-                margin-top: 1rem;
-            }
-
-            button:hover {
-                background-color: #0056b3;
-            }
-
-            .error {
-                color: #dc3545;
+                margin-bottom: 1.5rem;
+                font-size: 0.875rem;
                 text-align: center;
-                margin-bottom: 1rem;
-                font-size: 0.9rem;
+            }
+
+            .form-label {
+                display: block;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--text-main);
+                margin-bottom: 0.5rem;
+            }
+
+            .login-btn {
+                width: 100%;
+                padding: 12px;
+                margin-top: 1rem;
+                font-size: 1rem;
             }
         </style>
     </head>
 
     <body>
-        <div class="login-container">
-            <h2>StockMaster Pro</h2>
+        <div class="glass-card login-card">
+            <div class="login-header">
+                <h1>StockMaster Pro</h1>
+                <p>Gérez votre inventaire avec élégance</p>
+            </div>
+
             <% if (request.getAttribute("erreur") !=null) { %>
-                <div class="error">
+                <div class="error-box">
                     <%= request.getAttribute("erreur") %>
                 </div>
                 <% } %>
+
                     <form action="connexion" method="POST">
                         <div class="form-group">
-                            <label for="login">Utilisateur</label>
-                            <input type="text" id="login" name="login" required>
+                            <label class="form-label" for="login">Identifiant</label>
+                            <input class="input-field" type="text" id="login" name="login" placeholder="Ex: sabri"
+                                required>
                         </div>
                         <div class="form-group">
-                            <label for="pass">Mot de passe</label>
-                            <input type="password" id="pass" name="pass" required>
+                            <label class="form-label" for="pass">Mot de passe</label>
+                            <input class="input-field" type="password" id="pass" name="pass" placeholder="••••••••"
+                                required>
                         </div>
-                        <button type="submit">Se connecter</button>
+                        <button class="btn-primary login-btn" type="submit">Se connecter</button>
                     </form>
+
+                    <div style="margin-top: 2rem; text-align: center; font-size: 0.75rem; color: var(--text-muted);">
+                        © 2026 StockMaster Pro Inc.
+                    </div>
         </div>
     </body>
 
